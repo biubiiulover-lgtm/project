@@ -1,0 +1,51 @@
+.container {
+  background-color: #0a0f2d;
+  color: #ffffff;
+  font-family: 'Arial', sans-serif;
+  padding: 20px;
+  transition: background-color 0.3s;
+}
+
+.button {
+  padding: 10px 15px;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.button:hover {
+  background-color: #0056b3;
+  transform: scale(1.05);
+}
+
+.scrollable {
+  overflow-y: auto;
+  scroll-behavior: smooth;
+}
+
+.cursor-animation {
+  pointer-events: none;
+  position: fixed;
+  width: 25px;
+  height: 25px;
+  background: radial-gradient(circle, #007bff, #0056b3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.3s;
+}
+
+.cursor-animation:hover {
+  background: radial-gradient(circle, #0056b3, #004080);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.fade-in {
+  animation: fadeIn 1s ease;
+}
