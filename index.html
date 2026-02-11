@@ -4,117 +4,108 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Symposium Events</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
             margin: 0;
-            padding: 0;
             font-family: Arial, sans-serif;
-            overflow-x: hidden;
-            background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
-            color: #fff;
+            background: linear-gradient(135deg, #00aaff 30%, #00ff99 100%);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            cursor: url('glitter-cursor.png'), auto;
+        }
+        @keyframes gradient {
+            0% {background-position: 0% 50%;}
+            50% {background-position: 100% 50%;}
+            100% {background-position: 0% 50%;}
         }
         nav {
             position: fixed;
             width: 100%;
-            top: 0;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            padding: 1rem;
-            z-index: 1000;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: space-around;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
         }
         nav a {
-            color: #fff;
             text-decoration: none;
-            margin: 0 15px;
-            transition: 0.3s;
+            color: #333;
         }
-        nav a:hover {
-            text-shadow: 0 0 10px #fff;
+        .section {
+            padding: 100px 20px;
+            text-align: center;
         }
-        .smooth-scroll {
-            cursor: none;
+        .events {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .event {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            width: 200px;
+            transition: transform 0.2s;
+        }
+        .event:hover {
+            transform: scale(1.05);
         }
         .back-to-top {
             position: fixed;
             bottom: 20px;
             right: 20px;
-            background-color: #007bff;
+            background: #00aaff;
             color: white;
             border: none;
             border-radius: 5px;
-            padding: 10px 15px;
+            padding: 10px;
             cursor: pointer;
-            transition: background-color 0.3s;
-        }
-        .back-to-top:hover {
-            background-color: #0056b3;
-        }
-        .cursor {
-            position: fixed;
-            width: 10px;
-            height: 10px;
-            background: rgba(255, 255, 255, 1);
-            border-radius: 50%;
-            pointer-events: none;
-            transform: translate(-50%, -50%);
-            transition: transform 0.2s;
-        }
-        .event-card {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px;
-            transition: transform 0.3s;
-        }
-        .event-card:hover {
-            transform: scale(1.05);
-        }
-        .container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-        .particle-bg {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            background: url('particle.png') no-repeat center center fixed;
-            background-size: cover;
-            z-index: -1;
         }
     </style>
 </head>
 <body>
-    <div class="particle-bg"></div>
-    <nav>
-        <a href="#events">Events</a>
-        <a href="#about">About</a>
-        <a href="#contact">Contact</a>
-        <button class="back-to-top">⬆ Back to Top</button>
+    <nav id="navbar">
+        <a href="#technical-events">Technical Events</a>
+        <a href="#non-technical-events">Non-Technical Events</a>
     </nav>
-    <div class="container">
-        <h1>Welcome to the College Symposium Events</h1>
-        <div id="events">
-            <h2>Upcoming Events</h2>
-            <div class="event-card">Event 1 - <img src="placeholder.png" alt="Event 1 image"></div>
-            <div class="event-card">Event 2 - <img src="placeholder.png" alt="Event 2 image"></div>
-            <div class="event-card">Event 3 - <img src="placeholder.png" alt="Event 3 image"></div>
+
+    <div class="section" id="technical-events">
+        <h2>Technical Events</h2>
+        <div class="events">
+            <div class="event">
+                <h3>Event 1</h3>
+                <p>Details about technical event 1.</p>
+            </div>
+            <div class="event">
+                <h3>Event 2</h3>
+                <p>Details about technical event 2.</p>
+            </div>
         </div>
     </div>
+
+    <div class="section" id="non-technical-events">
+        <h2>Non-Technical Events</h2>
+        <div class="events">
+            <div class="event">
+                <h3>Event 3</h3>
+                <p>Details about non-technical event 1.</p>
+            </div>
+            <div class="event">
+                <h3>Event 4</h3>
+                <p>Details about non-technical event 2.</p>
+            </div>
+        </div>
+    </div>
+
+    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Back to Top</button>
+
     <script>
-        const cursor = document.createElement('div');
-        cursor.className = 'cursor';
-        document.body.appendChild(cursor);
-
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.pageX + 'px';
-            cursor.style.top = e.pageY + 'px';
-        });
-
-        const backToTopButton = document.querySelector('.back-to-top');
-        backToTopButton.addEventListener('click', () => {
-            window.scrollTo({top: 0, behavior: 'smooth'});
+        // Smooth scrolling for nav links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+            });
         });
     </script>
 </body>
