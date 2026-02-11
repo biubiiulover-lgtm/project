@@ -4,79 +4,118 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>College Symposium Events</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #001f3f;
-            color: #ffffff;
-            line-height: 1.6;
-            overflow-x: hidden;
-            scroll-behavior: smooth;
-        }
-        header {
-            position: relative;
-            text-align: center;
-            padding: 50px 0;
-        }
-        .title {
-            font-size: 2.5em;
             margin: 0;
-            animation: fadeIn 2s;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            overflow-x: hidden;
+            background: linear-gradient(to right, #1a2a6c, #b21f1f, #fdbb2d);
+            color: #fff;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1rem;
+            z-index: 1000;
         }
-        .card {
-            background: rgba(255, 255, 255, 0.2);
-            margin: 20px;
-            padding: 20px;
-            border-radius: 10px;
-            transition: transform 0.3s;
+        nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: 0.3s;
         }
-        .card:hover {
-            transform: scale(1.05);
+        nav a:hover {
+            text-shadow: 0 0 10px #fff;
         }
-        button {
-            background-color: #0074D9;
+        .smooth-scroll {
+            cursor: none;
+        }
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #007bff;
             color: white;
             border: none;
             border-radius: 5px;
-            padding: 10px 20px;
+            padding: 10px 15px;
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        button:hover {
+        .back-to-top:hover {
             background-color: #0056b3;
+        }
+        .cursor {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            background: rgba(255, 255, 255, 1);
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            transition: transform 0.2s;
+        }
+        .event-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px;
+            transition: transform 0.3s;
+        }
+        .event-card:hover {
+            transform: scale(1.05);
+        }
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .particle-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: url('particle.png') no-repeat center center fixed;
+            background-size: cover;
+            z-index: -1;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1 class="title">Welcome to the College Symposium Events</h1>
-        <p>Date and Time: 2026-02-11 17:11:49 (UTC)</p>
-    </header>
+    <div class="particle-bg"></div>
+    <nav>
+        <a href="#events">Events</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+        <button class="back-to-top">⬆ Back to Top</button>
+    </nav>
+    <div class="container">
+        <h1>Welcome to the College Symposium Events</h1>
+        <div id="events">
+            <h2>Upcoming Events</h2>
+            <div class="event-card">Event 1 - <img src="placeholder.png" alt="Event 1 image"></div>
+            <div class="event-card">Event 2 - <img src="placeholder.png" alt="Event 2 image"></div>
+            <div class="event-card">Event 3 - <img src="placeholder.png" alt="Event 3 image"></div>
+        </div>
+    </div>
+    <script>
+        const cursor = document.createElement('div');
+        cursor.className = 'cursor';
+        document.body.appendChild(cursor);
 
-    <section class="events">
-        <div class="card">
-            <h2>Event 1: Technology in Education</h2>
-            <p>Explore the latest innovations in educational technology.</p>
-            <button>Learn More</button>
-        </div>
-        <div class="card">
-            <h2>Event 2: The Future of Cybersecurity</h2>
-            <p>Discuss emerging threats and security strategies.</p>
-            <button>Learn More</button>
-        </div>
-        <div class="card">
-            <h2>Event 3: Networking in the Digital Age</h2>
-            <p>Connect with peers and professionals in the field.</p>
-            <button>Learn More</button>
-        </div>
-    </section>
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.pageX + 'px';
+            cursor.style.top = e.pageY + 'px';
+        });
 
-    <footer>
-        <p>&copy; 2026 College Symposium</p>
-    </footer>
+        const backToTopButton = document.querySelector('.back-to-top');
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({top: 0, behavior: 'smooth'});
+        });
+    </script>
 </body>
 </html>
