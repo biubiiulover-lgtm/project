@@ -8,105 +8,87 @@
         body {
             margin: 0;
             font-family: Arial, sans-serif;
-            background: linear-gradient(135deg, #00aaff 30%, #00ff99 100%);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
-            cursor: url('glitter-cursor.png'), auto;
+            overflow-x: hidden;
+            cursor: url('https://example.com/glitter-cursor.png'), auto; /* Custom glitter cursor */
+            background: linear-gradient(135deg, #00f260, #0575e6);
+            height: 100vh;
+            animation: flowing 5s infinite;
         }
-        @keyframes gradient {
-            0% {background-position: 0% 50%;}
-            50% {background-position: 100% 50%;}
-            100% {background-position: 0% 50%;}
+
+        @keyframes flowing {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
+
         nav {
             position: fixed;
+            top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.8);
-            display: flex;
-            justify-content: space-around;
+            background: rgba(0, 0, 0, 0.7);
             padding: 10px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
         }
+
         nav a {
+            color: white;
             text-decoration: none;
-            color: #333;
+            padding: 14px 20px;
+            transition: background 0.3s;
         }
-        .section {
-            padding: 100px 20px;
+
+        nav a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .back-to-top {
+            cursor: pointer;
+        }
+
+        .container {
+            margin-top: 60px;
             text-align: center;
         }
-        .events {
-            display: flex;
-            justify-content: space-around;
-            margin: 20px 0;
+
+        .image-box {
+            width: 300px;
+            height: 200px;
+            margin: 20px auto;
+            background-color: #fff;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
         }
-        .event {
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            padding: 20px;
-            width: 200px;
-            transition: transform 0.2s;
-        }
-        .event:hover {
+
+        .image-box:hover {
             transform: scale(1.05);
-        }
-        .back-to-top {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #00aaff;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            padding: 10px;
-            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
         }
     </style>
 </head>
 <body>
-    <nav id="navbar">
-        <a href="#technical-events">Technical Events</a>
-        <a href="#non-technical-events">Non-Technical Events</a>
+    <nav>
+        <div>
+            <a href="#">Home</a>
+            <a href="#">Events</a>
+            <a href="#">Contact Us</a>
+        </div>
+        <div class="back-to-top" onclick="scrollToTop()">Back to Top</div>
     </nav>
-
-    <div class="section" id="technical-events">
-        <h2>Technical Events</h2>
-        <div class="events">
-            <div class="event">
-                <h3>Event 1</h3>
-                <p>Details about technical event 1.</p>
-            </div>
-            <div class="event">
-                <h3>Event 2</h3>
-                <p>Details about technical event 2.</p>
-            </div>
-        </div>
+    <div class="container">
+        <h1>Welcome to the College Symposium Events</h1>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
+        <div class="image-box"></div>
     </div>
-
-    <div class="section" id="non-technical-events">
-        <h2>Non-Technical Events</h2>
-        <div class="events">
-            <div class="event">
-                <h3>Event 3</h3>
-                <p>Details about non-technical event 1.</p>
-            </div>
-            <div class="event">
-                <h3>Event 4</h3>
-                <p>Details about non-technical event 2.</p>
-            </div>
-        </div>
-    </div>
-
-    <button class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'});">Back to Top</button>
-
     <script>
-        // Smooth scrolling for nav links
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
             });
-        });
+        }
     </script>
 </body>
 </html>
