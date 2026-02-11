@@ -6,75 +6,110 @@
     <title>College Symposium Events</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #001f3f;
-            color: #fff;
             margin: 0;
-            padding: 0;
-            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+            background-color: #001f33;
+            color: #fff;
+            scroll-behavior: smooth;
         }
         header {
-            background: #007bff;
-            padding: 1rem;
+            padding: 20px;
             text-align: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+            background-color: #003366;
         }
-        h1 {
-            font-size: 3em;
-            animation: fadeIn 1s ease-in-out;
+        nav {
+            margin: 20px 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        nav a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #00ccff;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #ffffff;
+        }
+        section {
+            padding: 20px;
+            margin: 20px;
+            border-radius: 8px;
+            background-color: rgba(0, 51, 102, 0.6);
         }
         .event {
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-            margin: 1rem;
-            padding: 1rem;
-            transition: transform 0.3s;
+            display: flex;
+            flex-direction: column;
+            margin: 10px 0;
+            border: 1px solid #00ccff;
+            border-radius: 5px;
+            padding: 10px;
         }
-        .event:hover {
-            transform: scale(1.05);
+        .event img {
+            max-width: 100%;
+            border-radius: 5px;
+        }
+        .button {
+            padding: 10px 20px;
+            margin: 10px 0;
+            background-color: #00ccff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
             cursor: pointer;
+            transition: background-color 0.3s;
         }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            position: absolute;
-            bottom: 0;
-            width: 100%;
+        .button:hover {
+            background-color: #007bb5;
+        }
+        .smooth-scroll {
+            cursor: url('cursor.png'), auto; /* Custom cursor */
         }
     </style>
 </head>
-<body>
+<body class="smooth-scroll">
     <header>
-        <h1>Welcome to the College Symposium</h1>
+        <h1>Welcome to the College Symposium Events</h1>
+        <nav>
+            <a href="#technical-events">Technical Events</a>
+            <a href="#non-technical-events">Non-Technical Events</a>
+            <a href="#contact">Contact</a>
+        </nav>
     </header>
-    <main>
-        <section>
-            <div class="event">
-                <h2>Keynote Speech</h2>
-                <p>Date: 2026-02-12</p>
-                <p>Time: 10:00 AM</p>
-                <p>Join us for an inspiring keynote speech by a renowned expert!</p>
-            </div>
-            <div class="event">
-                <h2>Workshop on Cybersecurity</h2>
-                <p>Date: 2026-02-12</p>
-                <p>Time: 1:00 PM</p>
-                <p>Learn the latest techniques in cybersecurity!</p>
-            </div>
-            <div class="event">
-                <h2>Networking Session</h2>
-                <p>Date: 2026-02-12</p>
-                <p>Time: 3:00 PM</p>
-                <p>Meet industry professionals and expand your network!</p>
-            </div>
-        </section>
-    </main>
-    <footer>
-        <p>&copy; 2026 College Symposium Events</p>
+
+    <section id="technical-events">
+        <h2>Technical Events</h2>
+        <div class="event">
+            <h3>Code Challenge</h3>
+            <img src="code-challenge.jpg" alt="Code Challenge Event">
+            <p>Put your coding skills to the test and win exciting prizes!</p>
+            <button class="button">Register Now</button>
+        </div>
+        <div class="event">
+            <h3>Hackathon</h3>
+            <img src="hackathon.jpg" alt="Hackathon Event">
+            <p>Join us for an intense 48-hour coding marathon!</p>
+            <button class="button">Register Now</button>
+        </div>
+    </section>
+
+    <section id="non-technical-events">
+        <h2>Non-Technical Events</h2>
+        <div class="event">
+            <h3>Art Exhibition</h3>
+            <img src="art-exhibition.jpg" alt="Art Exhibition Event">
+            <p>Showcase your artistic talents at our annual exhibition.</p>
+            <button class="button">Register Now</button>
+        </div>
+        <div class="event">
+            <h3>Debate Competition</h3>
+            <img src="debate.jpg" alt="Debate Competition Event">
+            <p>Engage in thought-provoking discussions and showcase your debating skills.</p>
+            <button class="button">Register Now</button>
+        </div>
+    </section>
+
+    <footer id="contact">
+        <h2>Contact Us</h2>
+        <p>For more information, reach out to us at <a href="mailto:info@symposium.com">info@symposium.com</a></p>
     </footer>
 </body>
 </html>
